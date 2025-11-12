@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // Seed some demo products if empty
+  // Seed more demo products if empty
   useEffect(() => {
     const load = async () => {
       try {
@@ -19,12 +19,43 @@ function App() {
         if (Array.isArray(data) && data.length > 0) {
           setProducts(data)
         } else {
-          // seed
+          // richer demo catalog
           const demo = [
+            // Grocery & Staples
             { title: 'Basmati Rice 5kg', price: 12.99, category: 'Grocery', in_stock: true, description: 'Premium long-grain basmati rice' },
             { title: 'Sunflower Oil 1L', price: 3.49, category: 'Grocery', in_stock: true, description: 'Refined cooking oil' },
             { title: 'Toor Dal 1kg', price: 2.99, category: 'Grocery', in_stock: true, description: 'Protein-rich lentils' },
+            { title: 'Whole Wheat Atta 5kg', price: 6.99, category: 'Grocery', in_stock: true, description: 'Stone-ground chapati flour' },
+            { title: 'Sugar 2kg', price: 2.49, category: 'Grocery', in_stock: true, description: 'Fine granulated sugar' },
+
+            // Dairy & Bakery
+            { title: 'Milk 1L', price: 1.19, category: 'Dairy', in_stock: true, description: 'Toned milk' },
+            { title: 'Yogurt 500g', price: 1.49, category: 'Dairy', in_stock: true, description: 'Thick and creamy curd' },
+            { title: 'Brown Bread', price: 1.29, category: 'Bakery', in_stock: true, description: 'High-fiber sliced bread' },
+
+            // Fruits & Vegetables
+            { title: 'Bananas (6 pcs)', price: 1.39, category: 'Fruits', in_stock: true, description: 'Ripe and fresh' },
+            { title: 'Apples 1kg', price: 2.59, category: 'Fruits', in_stock: true, description: 'Crisp red apples' },
+            { title: 'Tomatoes 1kg', price: 1.19, category: 'Vegetables', in_stock: true, description: 'Juicy and ripe' },
+            { title: 'Onions 1kg', price: 0.99, category: 'Vegetables', in_stock: true, description: 'Kitchen essential' },
+            
+            // Snacks & Beverages
+            { title: 'Potato Chips 150g', price: 1.49, category: 'Snacks', in_stock: true, description: 'Classic salted chips' },
+            { title: 'Chocolate Cookies 200g', price: 1.99, category: 'Snacks', in_stock: true, description: 'Choco-chip goodness' },
+            { title: 'Green Tea 25 bags', price: 2.29, category: 'Beverages', in_stock: true, description: 'Antioxidant-rich tea' },
+            { title: 'Instant Coffee 100g', price: 3.99, category: 'Beverages', in_stock: true, description: 'Rich and aromatic' },
+
+            // Personal Care & Household
+            { title: 'Toothpaste 150g', price: 1.59, category: 'Personal Care', in_stock: true, description: 'Fluoride protection' },
+            { title: 'Shampoo 340ml', price: 3.49, category: 'Personal Care', in_stock: true, description: 'Soft and shiny hair' },
             { title: 'Detergent Powder 2kg', price: 4.99, category: 'Household', in_stock: true, description: 'Powerful stain removal' },
+            { title: 'Dishwash Liquid 500ml', price: 1.79, category: 'Household', in_stock: true, description: 'Grease cutting formula' },
+
+            // Packaged & Frozen
+            { title: 'Pasta 500g', price: 1.09, category: 'Packaged', in_stock: true, description: 'Durum wheat pasta' },
+            { title: 'Tomato Ketchup 1kg', price: 2.39, category: 'Packaged', in_stock: true, description: 'No added preservatives' },
+            { title: 'Frozen Peas 500g', price: 1.69, category: 'Frozen', in_stock: true, description: 'Sweet garden peas' },
+            { title: 'Ice Cream 1L (Vanilla)', price: 3.49, category: 'Frozen', in_stock: true, description: 'Classic vanilla treat' },
           ]
           for (const p of demo) {
             await fetch(`${BACKEND}/api/products`, {
